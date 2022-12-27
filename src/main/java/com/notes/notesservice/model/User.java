@@ -32,7 +32,7 @@ public class User {
     @UpdateTimestamp
     private Date last_updated_time;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user_id")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
     private Set<Note> notes;
 
 }
