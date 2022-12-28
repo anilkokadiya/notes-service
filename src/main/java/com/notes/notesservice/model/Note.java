@@ -2,10 +2,6 @@ package com.notes.notesservice.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-
-import java.util.Date;
 
 @Entity
 @Table(name = "note")
@@ -17,10 +13,6 @@ public class Note {
     @Column(name = "id")
     private int id;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
-
     @Column(name = "title")
     private String title;
 
@@ -28,11 +20,13 @@ public class Note {
     private String note;
 
     @Column(name = "created_time")
-    @CreationTimestamp
-    private Date created_time;
+    private String created_time;
 
     @Column(name = "last_updated_time")
-    @UpdateTimestamp
-    private Date last_updated_time;
+    private String last_updated_time;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
 }
