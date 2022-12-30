@@ -45,11 +45,9 @@ public class AuthServerConfig {
         RegisteredClient registeredClient = RegisteredClient.withId(UUID.randomUUID().toString())
                 .clientId("api-client")
                 .clientSecret("secret")
-                .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
                 .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
-                .authorizationGrantType(AuthorizationGrantType.PASSWORD)
-                .authorizationGrantType(AuthorizationGrantType.REFRESH_TOKEN)
-                .redirectUri("http://localhost:8080/oauth2/authorize")
+                .clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
+                .redirectUri("http://localhost:8080/api/login/oauth2/code/api-client-oidc")
                 .redirectUri("http://localhost:8080/api/notes")
                 .scope(OidcScopes.OPENID)
                 .scope("api.read")
@@ -85,9 +83,7 @@ public class AuthServerConfig {
 
     @Bean
     public ProviderSettings providerSettings() {
-        return ProviderSettings.builder()
-                .issuer("http://auth-server:8080")
-                .build();
+        return ProviderSettings.builder().build();
     }
 
 }
